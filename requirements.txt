@@ -1,0 +1,5 @@
+bs4
+requests
+lxml
+pydantic
+directus-sdk-py
