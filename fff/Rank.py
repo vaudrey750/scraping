@@ -54,6 +54,6 @@ class Ranking(BaseFffScraping):
         except Exception as e:
             print(e)
         
-        with open('fff_ranking.json', 'w') as fp:
-                json.dump(datas, fp)
+        #with open('fff_ranking.json', 'w') as fp:
+        #        json.dump(datas, fp)
         return datas

@@ -14,6 +14,9 @@ MAPPING_CLUB = {
     "U.S.O.A.M 5"               : "e206837c-78b0-4909-b4e9-cc2cd1baf0fc",
     "SUPREMES BELIERS 5"        : "fa1b1466-e783-45d7-be3e-120da4ac9fab",
     "PLAISIR PORTUGAIS AS 5"    : "25c70709-16fc-4416-9cc2-3190800c2d32",
+    "ARGENTEUIL FR. PORT. 5"    : "e9589e46-1118-487f-a615-e43336aec602",
+    "PARIS SAINT-GERMAIN 5"     : "2425e43d-007c-4663-88b0-25527bc2d4e7",
+    "MINHOTOS DE BRAGA 5"       : "795193a4-8bb1-4a1a-a6bf-1eec8cf97957"
 }
 
 RANKING_ID = {
@@ -40,5 +43,6 @@ COMPETITION = {
     "CDM R1": "34f63369-b3c7-4164-b1b7-7cd5d1966c8a",
     "AMICAL": "25f9acf7-25ab-4138-88e8-1454bf42d83c",
     "CDM COUPE PARIS CREDIT MUTUEL IDF": "1afdb0f0-88a7-4de3-9c44-e2541ab269ff",
+    "COUPE VDM CDM": "1afdb0f0-88a7-4de3-9c44-e2541ab269ff",
     "CDM - D2": "1a1b87e3-7570-440a-a868-3a9ca42918fa",
 }
