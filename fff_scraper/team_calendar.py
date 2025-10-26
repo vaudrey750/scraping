@@ -8,6 +8,8 @@ from models import MonthGames, Team, Game, TeamScore, Score
 
 
 def format_date(str_date: str, str_hour: str):
+    if str_hour.strip() == '-':
+        return None
     original_datetime_str = f"{str_date} - {str_hour}"
     mois_fr_to_num = {
     "janv.": "01", "févr.": "02", "mars": "03", "avr.": "04",
@@ -24,7 +26,7 @@ def format_date(str_date: str, str_hour: str):
 
     # Reconstitution d'une chaîne compatible avec datetime
     clean_str = f"{day}/{mois}/{year} {time}"
-    date_obj = datetime.strptime(clean_str, "%d/%m/%Y %H:%M")
+    date_obj = datetime.strptime(clean_str, "%d/%m/%Y %Hh%M")
 
     # Conversion au format ISO
     return date_obj.strftime("%Y-%m-%dT%H:%M:%S")
@@ -80,7 +82,7 @@ class TeamCalendar:
             team_name = team_parsor.find("span", attrs={"class": "equipe-name"}).text
 
             team_status = team_parsor.find("span", attrs={"class": "equipe-statut"})
-            is_forfeit = True if team_status and team_status.text == 'Forfait' else False
+            is_forfeit = True if team_status and team_status.text in ('Forfait', 'Forfait général') else False
 
             return Team(name=team_name, link=team_link, logo=team_logo) , is_forfeit
         except Exception as e:
@@ -125,7 +127,7 @@ class TeamCalendar:
             score_game.append(
                 Game(
                     date = game_date.split('-')[0].strip(),
-                    hour = game_hour,
+                    hour = game_date.split('-')[1].strip(),
                     link = game_link,
                     day = game_day,
                     season = os.getenv("SAISON"),
@@ -170,15 +172,16 @@ class TeamCalendar:
             )
 
             for game in games:
+                have_forfeit = game.visitor.is_forfeit or game.receiver.is_forfeit
                 games_json.append({
                     "game_id": game.game_identifer,
                     "status": "published",
                     "receiver_team": game.receiver.team.name,
-                    "receiver_goal": game.receiver.score.goal,
+                    "receiver_goal": 0 if have_forfeit else game.receiver.score.goal,
                     "receiver_penalty_goal": game.receiver.score.tab_goal,
                     "receiver_forfeit": game.receiver.is_forfeit,
                     "visitor_team": game.visitor.team.name,
-                    "visitor_goal": game.visitor.score.goal,
+                    "visitor_goal": 0 if have_forfeit else game.visitor.score.goal,
                     "visitor_penalty_goal": game.visitor.score.tab_goal,
                     "visitor_forfeit": game.visitor.is_forfeit,
                     "game_date": format_date(game.date, game.hour),

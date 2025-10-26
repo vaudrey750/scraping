@@ -13,13 +13,16 @@ PLAYER_MAPPING_POSITION = {
 
 
 COMPETITIONS = {
-    "2024-2025": {
-        "CDM R2": [1154627, 115],
-        "AMICAL": [1120616, 112],
-        "CDM COUPE PARIS CREDIT MUTUEL IDF": [1289465, 128],
-        "COUPE VDM CDM": [1328880, 132]
-    },
+    #"2024-2025": {
+    #    "CDM R2": [1154627, 115],
+    #    "AMICAL": [1120616, 112],
+    #    "CDM COUPE PARIS CREDIT MUTUEL IDF": [1289465, 128],
+    #    "COUPE VDM CDM": [1328880, 132]
+    #},
     "2025-2026": {
-        "AMICAL": [1364019, 136]
+        "AMICAL": [1364019, 136],
+        "CDM R2": [1584438, 158],
+        "COUPE VDM CDM": [1667681, 166],
+        "CDM COUPE PARIS CREDIT MUTUEL IDF": [1634850, 163],
     }
 }

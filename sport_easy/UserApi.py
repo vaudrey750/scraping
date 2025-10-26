@@ -54,7 +54,8 @@ def get_player_status(team_id=495464):
     
 # saeson 2023-2024 => 1792180
 # saeson 2024-2025 => 1792180
-def get_members(team_id=495464, season_id=1792180):
+# saeson 2025-2026 => 2194567
+def get_members(team_id=495464, season_id=2194567):
     """get All member
     """
     directus_members = []
@@ -82,7 +83,7 @@ def get_members(team_id=495464, season_id=1792180):
         return directus_members
                 
 
-def get_players(team_id=495464, season_id=1792180):
+def get_players(team_id=495464, season_id=2194567):
     """get All member
     """
     directus_players = []
@@ -103,9 +104,9 @@ def get_players(team_id=495464, season_id=1792180):
             directus_players.append({
                 "player_id": str(result["id"]),
                 "member": str(result["id"]),
-                "main_picture": "13bcc9c0-f152-4fb3-a397-dada0aaefee0",
-                "stat_picture": "13bcc9c0-f152-4fb3-a397-dada0aaefee0",
-                "celebration_picture": "13bcc9c0-f152-4fb3-a397-dada0aaefee0",
+                #"main_picture": "13bcc9c0-f152-4fb3-a397-dada0aaefee0",
+                #"stat_picture": "13bcc9c0-f152-4fb3-a397-dada0aaefee0",
+                #"celebration_picture": "13bcc9c0-f152-4fb3-a397-dada0aaefee0",
                 "status": "published",
                 "position": str(player_position),
                 "stat": [{
@@ -119,7 +120,6 @@ def get_players(team_id=495464, season_id=1792180):
         with open('players.json', 'w') as fp:
             json.dump(directus_players, fp)
         return directus_players
-
 
 
 def get_player_stats(team_id=495464):
@@ -148,7 +148,7 @@ def get_player_stats(team_id=495464):
                 result_json = result.json()
                 for player in result_json.get("players", []):
                     player_id = player["player"]["id"]
-                    if player_id in (8708185, 8702607, 8886783, 1739191, 8871730):
+                    if player_id in (8708185, 8702607, 8886783, 1739191, 8871730, 9440928):
                         continue
 
                     if not competions_by_palyer.get(player_id):
@@ -215,6 +215,6 @@ def get_player_stats(team_id=495464):
         json.dump(players, fp)
     return players
 
-
-
+get_members()
 get_players()
+get_player_stats()
