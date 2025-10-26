@@ -19,12 +19,14 @@ class SportEasy:
         """
         cookies = {}
         today = date.today()
-        
-        with open(COOKIES_FILE_PATH, "r") as json_file:
-            cookies = json.load(json_file)
-        
-        if today < datetime.strptime(cookies.get("expire_date"), "%Y-%m-%d").date():
-            return cookies
+        try:
+            with open(COOKIES_FILE_PATH, "r") as json_file:
+                cookies = json.load(json_file)
+            
+            if today < datetime.strptime(cookies.get("expire_date"), "%Y-%m-%d").date():
+                return cookies
+        except:
+            return {}
         return {}
         
 
