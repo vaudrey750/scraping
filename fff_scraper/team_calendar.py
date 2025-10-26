@@ -71,7 +71,6 @@ class TeamCalendar:
         except Exception as e:
             raise(f"Game month not found => Error: {e}")
 
-
     def __team_details(self, info_score, class_tag):
         """
         """

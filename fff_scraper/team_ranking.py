@@ -15,8 +15,7 @@ class Ranking:
         BASE_URL= os.getenv("BASE_URL")
         self.url = f"{BASE_URL}/{url_prefix}"
         self.team_ranks: list[TeamRanking] = []
-
-    
+ 
     def __extract_ranking(self):
         driver = init_scraper()
         driver.get(self.url)
@@ -110,5 +109,3 @@ class Ranking:
 
 
 Ranking().run()
-
-
